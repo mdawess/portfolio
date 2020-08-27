@@ -1,4 +1,5 @@
 from stonk import Portfolio
+import tkinter as tk
 
 BASE = 1
 
