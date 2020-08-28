@@ -19,6 +19,8 @@ class Portfolio:
                 self.stocks[ticker].append(shares)
             else:
                 self.stocks[ticker][0] = self.stocks[ticker][0] + shares
+        # pull current prices        
+        self.current_prices()
 
     def remove_ticker(self, ticker, shares=1) -> None:
         """Removes a ticker or tickers from the list from the list. Can be either a
@@ -33,6 +35,9 @@ class Portfolio:
                     self.stocks.pop(ticker)
             else:
                 print("Unable to remove, " + ticker + " not found.")
+        
+        # pull current prices        
+        self.current_prices()
 
     def convert_cad(self, ttp) -> dict:
         """Returns a new dictionary with all prices in CAD."""
@@ -47,18 +52,7 @@ class Portfolio:
         
     def current_prices(self) -> None:
         """Returns the current prices attached to the individual ticker in a dictionary."""
-        """
-        ticker_to_price = {}
-
-        for stock in self.stocks:
-            initialize = yf.Ticker(stock)
-            price = initialize.history(period="max")["Close"][-1]
-            ticker_to_price[stock] = price
-
-        ticker_to_price = self.convert_cad(ticker_to_price)
-
-        return ticker_to_price
-        """
+        
         for stock in self.stocks:
             initialize = yf.Ticker(stock)
             price = initialize.history(period="max")["Close"][-1]
@@ -74,12 +68,16 @@ class Portfolio:
     def check_portfolio(self) -> list:
         """Returns the current holdings and their most recent price."""
         
-        self.current_prices()
         print(self.stocks)
 
     def portfolio_value(self) -> float:
         """Returns the total value of all current holdings"""
-        
+        total_value = 0
+        for stock in self.stocks:
+            total_value += self.stocks[stock][0] * self.stocks[stock][1]
+
+        return total_value
+
     
 
 
