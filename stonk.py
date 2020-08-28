@@ -78,6 +78,14 @@ class Portfolio:
 
         return total_value
 
+    def percent_gain(self, initial_investment) -> float:
+        """Returns the net percent gain when compared to base."""
+
+        current_value = self.portfolio_value()
+
+        gain = ((current_value / initial_investment) - 1) * 100
+        return str(gain.round(2)) + "%"
+
     
 
 
