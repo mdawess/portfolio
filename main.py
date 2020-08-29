@@ -1,18 +1,27 @@
 from stonk import Portfolio
+from analysis import Analyze
 import tkinter as tk
 
 BASE = 10000
 
 PORTFOLIO = ["CGC", "TD.TO", "WCN", "BMO.TO", "BNS.TO", "NFI.TO", "VCN.TO", 
-            "VOO", "SPY", "PM", "TSLA"]
+            "VOO", "SPY", "YEKLALALSJNDJBDJHV", "PM", "TSLA"]
 
-current_shares = [10, 20, 35, 5, 12, 1, 11, 6, 1, 1]
+current_shares = [10, 20, 35, 5, 12, 1, 11, 6, 1, 1, 2]
 
-test = Portfolio()
-test.portfolioOwner = "Michael Dawes"
-test.add_ticker("MSFT", 7)
-test.add_ticker("TSLA", 5)
+myPortfolio = Portfolio()
+myPortfolio.Owner = "Michael Dawes"
 
-print(test.percent_gain(BASE))
+# for i in range(len(PORTFOLIO) - 1):
+#     myPortfolio.add_ticker(PORTFOLIO[i], current_shares[i])
+# myPortfolio.add_ticker("SPY")
+# myPortfolio.add_ticker("MSFT", 3)
+# myPortfolio.add_ticker("AAPL", 2)
 
-test.portfolioOwner = "Michael Dawes"
+# myPortfolio.add_ticker("TSLA", 2)
+# myPortfolio.add_ticker("XYZ", 2)
+
+test = Analyze(myPortfolio.check_portfolio(), myPortfolio.portfolio_value())
+test.display_charts()
+
+
