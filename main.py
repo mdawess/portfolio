@@ -1,6 +1,9 @@
 from stonk import Portfolio
 from analysis import Analyze
 import tkinter as tk
+import dearpygui as gui
+
+# ref https://pypi.org/project/dearpygui/
 
 BASE = 10000
 
